@@ -1,0 +1,14 @@
+Sys.getenv("JAVA_HOME")
+Sys.setenv(JAVA_HOME="D:\\Program\\jdk1.7")
+library(xlsx)
+library(ggradar)
+rname<-c('NN-Filter','Peter-Filter','Yu-Filter','HISNN','FSE')
+data<-read.xlsx("ps.xls",1)
+data2Q18<-data[1:6,2:5]
+data2Q18<-as.data.frame(data2Q18)
+data2Q18<-as.matrix(data2Q18)
+data2Q18<-t(data2Q18)
+colnames(data2Q18)<-cname
+data2Q18<-data.frame(data2Q18)
+data2Q18<-data.frame(rname,data2Q18)
+ggradar(data2Q18,grid.min = 0,  grid.mid = 0.405, grid.max = 0.81,group.point.size = 1,group.line.width = 0.6,plot.extent.x.sf = 1.1,label.gridline.min = FALSE,label.gridline.mid = FALSE,label.gridline.max = FALSE,axis.label.offset = 1.15,axis.label.size = 4,grid.label.size = 5,background.circle.colour ="white",legend.text.size=8,gridline.mid.colour ="grey")
